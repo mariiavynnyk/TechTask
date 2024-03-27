@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 
-public class SwagLabs extends BaseTest {
+public class SwagLabsTest extends BaseTest {
     private LoginPage loginPage;
     private CheckoutPage checkoutPage;
     private BasketPage basketPage;
@@ -28,20 +28,14 @@ public class SwagLabs extends BaseTest {
 
     @BeforeClass
     public void beforeClass() {
-    }
-
-    @BeforeClass
-    public void BeforeClass() {
         loginPage = new LoginPage(driver);
-        basketPage = new BasketPage(driver);
-        productPage = new ProductPage(driver);
-        checkoutPage = new CheckoutPage(driver);
         loginPage.openPage();
     }
 
     @Test
     @Description("Verify user can log in and product page is opened")
     public void verifyProductsPageIsOpenedAfterLogIn() {
+        productPage = new ProductPage(driver);
         loginPage.logIn(EMAIL, PASSWORD);
 
         Assert.assertEquals(productPage.getProductPageTitle(), "Swag Labs",
@@ -50,6 +44,7 @@ public class SwagLabs extends BaseTest {
 
     @Test(dependsOnMethods = "verifyProductsPageIsOpenedAfterLogIn")
     public void verifyAddedProductsInTheBasket() {
+        basketPage = new BasketPage(driver);
         List<String> productTitles = Arrays.asList(PRODUCT_NAME_1, PRODUCT_NAME_2, PRODUCT_NAME_3);
         productTitles.forEach(name -> productPage.addProductToTheBasket(name));
         productPage.navigateToBasket();
@@ -68,6 +63,7 @@ public class SwagLabs extends BaseTest {
 
     @Test(dependsOnMethods = "verifyRemovedProductIsNotPresentInTheBasket")
     public void verifyTheTotalPrice() {
+        checkoutPage = new CheckoutPage(driver);
         double firstPrice = basketPage.getProductPrice(PRODUCT_NAME_2);
         double secondPrice = basketPage.getProductPrice(PRODUCT_NAME_3);
 

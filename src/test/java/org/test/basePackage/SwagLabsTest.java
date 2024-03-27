@@ -44,10 +44,9 @@ public class SwagLabsTest extends BaseTest {
 
     @Test(dependsOnMethods = "verifyProductsPageIsOpenedAfterLogIn")
     public void verifyAddedProductsInTheBasket() {
-        basketPage = new BasketPage(driver);
         List<String> productTitles = Arrays.asList(PRODUCT_NAME_1, PRODUCT_NAME_2, PRODUCT_NAME_3);
         productTitles.forEach(name -> productPage.addProductToTheBasket(name));
-        productPage.navigateToBasket();
+        basketPage = productPage.navigateToBasket();
 
         Assert.assertTrue(productTitles.containsAll(basketPage.getProductsTitle()),
                 String.format("Products '%s' should be shown in the basket.", productTitles));
@@ -63,11 +62,10 @@ public class SwagLabsTest extends BaseTest {
 
     @Test(dependsOnMethods = "verifyRemovedProductIsNotPresentInTheBasket")
     public void verifyTheTotalPrice() {
-        checkoutPage = new CheckoutPage(driver);
         double firstPrice = basketPage.getProductPrice(PRODUCT_NAME_2);
         double secondPrice = basketPage.getProductPrice(PRODUCT_NAME_3);
 
-        basketPage.clickOnCheckoutButton();
+        checkoutPage = basketPage.clickOnCheckoutButton();
         checkoutPage.fillInformationFieldsIfNeededAndContinue("Test", "User", 12345);
 
         double tax = basketPage.getTax();
@@ -80,7 +78,7 @@ public class SwagLabsTest extends BaseTest {
 
     @Test(dependsOnMethods = "verifyTheTotalPrice")
     public void verifyTheOrderIsCreated() {
-        basketPage.clickOnFinishButton();
+        checkoutPage = basketPage.clickOnFinishButton();
 
         Assert.assertTrue(checkoutPage.isSuccessCheckoutMessageShown(),
                 "'Checkout: Complete!' title should be shown.");

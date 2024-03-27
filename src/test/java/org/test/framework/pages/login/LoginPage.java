@@ -9,18 +9,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class LoginPage extends AbstractPage {
-
-    private WebDriver driver;
-    private WebDriverWait wait;
-    private By passwordElement = By.id("password");
-    private By userNameElement = By.id("user-name");
-    private By loginButtonElement = By.id("login-button");
-
-    private By errorElement = By.xpath("//*[contains(text(),'Invalid email')]");
-    private By navBarAccountElement = By.id("navbarAccount");
-    private By goToUserProfileElement = By.cssSelector("[aria-label='Go to user profile'] span");
-    private String emptyString = "          ";
-    private By logOutElement = By.xpath("//*[@id='navbarLogoutButton']//span");
+    private final WebDriver driver;
+    private final WebDriverWait wait;
+    private final By passwordElement = By.id("password");
+    private final By userNameElement = By.id("user-name");
+    private final By loginButtonElement = By.id("login-button");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -44,11 +37,5 @@ public class LoginPage extends AbstractPage {
     @Step("Click on login button")
     public void clickOnLoginButton() {
         driver.findElement(loginButtonElement).click();
-    }
-
-    @Step("User log out")
-    public void logOut() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(logOutElement));
-        driver.findElement(logOutElement).click();
     }
 }

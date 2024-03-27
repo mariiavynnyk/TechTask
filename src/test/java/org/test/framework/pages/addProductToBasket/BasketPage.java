@@ -6,6 +6,7 @@ import org.test.framework.pages.AbstractPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.test.framework.pages.Checkout.CheckoutPage;
 
 import java.time.Duration;
 import java.util.List;
@@ -14,8 +15,11 @@ import java.util.stream.Collectors;
 public class BasketPage extends AbstractPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
-
-    private By productTitleElement = By.xpath("//*[@class='inventory_item_name']");
+    private final By productTitleElement = By.xpath("//*[@class='inventory_item_name']");
+    private final By checkoutButtonElement = By.id("checkout");
+    private final By finishButtonElement = By.id("finish");
+    private final By totalPriceElement = By.xpath("//*[contains(@class,'summary_total_label')]");
+    private final By taxElement = By.xpath("//*[@class ='summary_tax_label']");
 
     private By removeProductFromTheBasketElement(String productName) {
         String xPath = String.format("//div[contains(text(), \"%s\")]/parent::a/parent::*//button[contains(text(), 'Remove')]", productName);
@@ -31,11 +35,6 @@ public class BasketPage extends AbstractPage {
         String xPath = String.format("  //*[@class='cart_item_label']//*[contains(text(),  \"%s\")]/parent::a/parent::div/div[@class='item_pricebar']/div", productName);
         return By.xpath(xPath);
     }
-
-    private By checkoutButtonElement = By.id("checkout");
-    private By finishButtonElement = By.id("finish");
-    private By totalPriceElement = By.xpath("//*[contains(@class,'summary_total_label')]");
-    private By taxElement = By.xpath("//*[@class ='summary_tax_label']");
 
     public BasketPage(WebDriver driver) {
         super(driver);
@@ -85,12 +84,14 @@ public class BasketPage extends AbstractPage {
     }
 
     @Step("Click on checkout button")
-    public void clickOnCheckoutButton() {
+    public CheckoutPage clickOnCheckoutButton() {
         driver.findElement(checkoutButtonElement).click();
+        return new CheckoutPage(driver);
     }
 
     @Step("Click on finish button")
-    public void clickOnFinishButton() {
+    public CheckoutPage clickOnFinishButton() {
         driver.findElement(finishButtonElement).click();
+        return new CheckoutPage(driver);
     }
 }

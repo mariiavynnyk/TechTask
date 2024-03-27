@@ -10,19 +10,17 @@ import org.test.framework.pages.AbstractPage;
 import java.time.Duration;
 
 public class CheckoutPage extends AbstractPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
-
-    private By continueButtonElement = By.id("continue");
-    private By firstNameElement = By.id("first-name");
-    private By lastNameElement = By.id("last-name");
-    private By postalCodeElement = By.id("postal-code");
-    private By completeOrderTextElement = By.xpath("//span[contains(text(), 'Checkout: Complete!')]");
+    private final WebDriver driver;
+    private final By continueButtonElement = By.id("continue");
+    private final By firstNameElement = By.id("first-name");
+    private final By lastNameElement = By.id("last-name");
+    private final By postalCodeElement = By.id("postal-code");
+    private final By completeOrderTextElement = By.xpath("//span[contains(text(), 'Checkout: Complete!')]");
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT));
+        new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT));
     }
 
     @Override

@@ -12,11 +12,11 @@ import org.test.framework.pages.AbstractPage;
 import java.time.Duration;
 
 public class ProductPage extends AbstractPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
 
-    private By productPageTitleElement = By.xpath("//*[@class = 'app_logo']");
-    private By openBasketElement = By.xpath("//*[@class = 'shopping_cart_link']");
+    private final By productPageTitleElement = By.xpath("//*[@class = 'app_logo']");
+    private final By openBasketElement = By.xpath("//*[@class = 'shopping_cart_link']");
 
     private By addProductToBasketElement(String productName) {
         String xPath = String.format("//div[contains(text(), \"%s\")]/parent::a/parent::div/following-sibling::div[@class='pricebar']/button", productName);
@@ -47,7 +47,8 @@ public class ProductPage extends AbstractPage {
     }
 
     @Step("Navigate to basket")
-    public void navigateToBasket() {
+    public BasketPage navigateToBasket() {
         driver.findElement(openBasketElement).click();
+        return new BasketPage(driver);
     }
 }

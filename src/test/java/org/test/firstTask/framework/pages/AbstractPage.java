@@ -1,4 +1,4 @@
-package org.test.framework.pages;
+package org.test.firstTask.framework.pages;
 
 import org.openqa.selenium.WebDriver;
 

@@ -1,7 +1,7 @@
-package org.test.appium;
+package org.test.appiumTask;
 
 //What are the mobile application types you are familiar with?
-// Answer: I'm familiar with Native App.
+// Answer: I'm familiar with Native App from my last project.
 // These are applications built specifically for a particular platform (e.g., iOS or Android)
 // using the platform's native programming languages and APIs.
 // They offer high performance and full access to device features but require separate development for each platform.
@@ -18,8 +18,8 @@ import org.testng.annotations.BeforeMethod;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static org.test.appium.AppConfiguration.ANDROID_APP_PATH;
-import static org.test.appium.AppConfiguration.iOS_APP_PATH;
+import static org.test.appiumTask.AppConfiguration.ANDROID_APP_PATH;
+import static org.test.appiumTask.AppConfiguration.iOS_APP_PATH;
 
 public abstract class AppiumTest {
     protected AppiumDriver<MobileElement> driver;
@@ -32,7 +32,7 @@ public abstract class AppiumTest {
     @AfterMethod
     public void tearDown() {
         if (driver != null) {
-//            driver.quit();
+            driver.quit();
         }
     }
 

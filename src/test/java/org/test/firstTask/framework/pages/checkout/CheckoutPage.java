@@ -1,11 +1,11 @@
-package org.test.framework.pages.Checkout;
+package org.test.firstTask.framework.pages.checkout;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.test.framework.pages.AbstractPage;
+import org.test.firstTask.framework.pages.AbstractPage;
 
 import java.time.Duration;
 

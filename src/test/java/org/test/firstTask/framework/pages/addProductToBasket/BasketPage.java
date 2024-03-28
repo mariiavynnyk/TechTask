@@ -1,12 +1,12 @@
-package org.test.framework.pages.addProductToBasket;
+package org.test.firstTask.framework.pages.addProductToBasket;
 
 import io.qameta.allure.Step;
 import org.apache.commons.lang.StringUtils;
-import org.test.framework.pages.AbstractPage;
+import org.test.firstTask.framework.pages.AbstractPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.test.framework.pages.Checkout.CheckoutPage;
+import org.test.firstTask.framework.pages.checkout.CheckoutPage;
 
 import java.time.Duration;
 import java.util.List;

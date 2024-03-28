@@ -1,7 +1,7 @@
-package org.test.framework.pages.login;
+package org.test.firstTask.framework.pages.login;
 
 import io.qameta.allure.Step;
-import org.test.framework.pages.AbstractPage;
+import org.test.firstTask.framework.pages.AbstractPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;

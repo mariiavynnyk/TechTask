@@ -1,4 +1,4 @@
-package org.test.basePackage;
+package org.test.firstTask.basePackage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

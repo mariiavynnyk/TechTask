@@ -1,4 +1,4 @@
-package org.test.appium;
+package org.test.appiumTask;
 
 import io.appium.java_client.MobileElement;
 

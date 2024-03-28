@@ -1,10 +1,10 @@
-package org.test.basePackage;
+package org.test.firstTask.basePackage;
 
 import io.qameta.allure.Description;
-import org.test.framework.pages.Checkout.CheckoutPage;
-import org.test.framework.pages.addProductToBasket.BasketPage;
-import org.test.framework.pages.addProductToBasket.ProductPage;
-import org.test.framework.pages.login.LoginPage;
+import org.test.firstTask.framework.pages.checkout.CheckoutPage;
+import org.test.firstTask.framework.pages.addProductToBasket.BasketPage;
+import org.test.firstTask.framework.pages.addProductToBasket.ProductPage;
+import org.test.firstTask.framework.pages.login.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
